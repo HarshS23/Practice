@@ -13,7 +13,10 @@ int fib1(int n){
 
 
 int main(){
-    int x = fib1(5);
+    int y;
+    printf("Input a value: ");
+    scanf(" %d", &y);
+    int x = fib1(y);
 
     printf("FIB1 value : %d\n", x);
 }
