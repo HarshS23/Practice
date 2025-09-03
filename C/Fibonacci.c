@@ -45,5 +45,5 @@ int main(){
     int z = fib2(y);
 
     printf("FIB1 value: %d\n", x);
-    Printf("FIB2 value: %d\n", z);
+    printf("FIB2 value: %d\n", z);
 }
