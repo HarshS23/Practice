@@ -52,15 +52,57 @@ Read 0 → stop.
 Result:
 wordTable = [cat, dog, fish]
 countTable = [2, 3, 1]
+
+make build MAIN=DicComp.c
 */
 
 
 
 
-void BuildTable(void);
+int BuildTable(char input[4]){
+
+    char word_array[4];
+    int count_array[4] = {0};
+    int ucount = 0;
+
+
+    for(int i = 0; i < 4; i++){
+
+        char current = input[i];
+        int found = 0;
+
+        for(int j = 0; j < ucount; j++){
+            if(word_array[j] == current){
+                count_array[j]++; 
+                found = 1;
+                break;
+            }
+
+        }
+
+        if(!found){
+            word_array[ucount] = current; 
+            count_array[ucount] = 1;
+            ucount++;
+        }
+
+    }
+
+
+    for (int k = 0; k < ucount; k++) {
+        printf("%c: %d\n", word_array[k], count_array[k]);
+    }
+
+    return ucount;
+}
 
 
 int main(void){
+
+
+    char input[4] = {'a', 'a', 'b', 'b'};
+    BuildTable(input);
+    
     
     return 0;
 }
