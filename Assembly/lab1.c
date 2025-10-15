@@ -15,11 +15,12 @@
 
 const char* creditValid(long long num){
 
-    int array[16]; 
+    int array[19]; 
     int count = 0;
+    int total = 0;
 
     while (num > 0){
-        array[count++] = num % 10; 
+        array[count++] = (int)(num % 10); 
         num /= 10;
     }
 
@@ -28,8 +29,21 @@ const char* creditValid(long long num){
         int temp = array[i]; 
         array[i] = array[count - i - 1]; 
         array[count - i - 1] = temp;
-
     }
+
+
+    for(int i = 0; i < count ; i++){
+        int d = array[i];
+        if(((count - i) % 2) == 0){
+            d *= 2; 
+            if(d > 9) d -= 9;
+        }
+        total += d;
+    }
+
+
+
+    if(total % 10 != 0) return "invalid" ;
 
     int first = array[0];
     switch(first){
@@ -44,9 +58,14 @@ const char* creditValid(long long num){
 }
 
 
+// creditValid must determine if the card is valid if its valid then it must return the correct type.
+
+
 int main(){
 
-    long long x = 9234567890123456;
+    long long x;
+    printf("Please enter a number (Max 16 digits): ");
+    scanf(" %lld", &x);
     const char* num = creditValid(x);
     printf("%s\n", num);                
     return 0;
