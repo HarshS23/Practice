@@ -57,6 +57,40 @@ make build MAIN=DicComp.c
 */
 
 
+int Btable(char input[4]){
+
+    char word_table[4];
+    char count_table[4]; 
+    int uwordcount= 0;
+
+    for(int i = 0; i < 4; i++){
+        char current_word = input[i];
+        int found = 0; 
+
+        for(int j = 0; j < uwordcount; j++){
+            if(word_table[j] == current_word){
+                count_table[j]++;
+                found = 1;
+                break;
+            }
+
+
+        }
+
+        if(!found){
+            word_table[uwordcount] = current_word;
+            count_table[uwordcount] = 1;
+            uwordcount++;
+        }
+    }
+
+
+
+
+
+}
+
+
 
 
 int BuildTable(char input[4]){
@@ -89,9 +123,9 @@ int BuildTable(char input[4]){
     }
 
 
-    for (int k = 0; k < ucount; k++) {
-        printf("%c: %d\n", word_array[k], count_array[k]);
-    }
+    // for (int k = 0; k < ucount; k++) {
+    //     printf("%c: %d\n", word_array[k], count_array[k]);
+    // }
 
     return ucount;
 }
