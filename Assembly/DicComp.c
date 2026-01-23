@@ -1,0 +1,138 @@
+#include <stdio.h>
+
+/*
+
+
+How to Identify Unique Words in buildTables
+
+Start with empty wordTable and countTable.
+
+For each word in the input:
+
+Search through wordTable from the start to see if this word already exists:
+
+Compare the current input word with every word in wordTable.
+
+If you find a match:
+
+Increment the corresponding count in countTable.
+
+Stop searching (this word is NOT unique this time).
+
+If you don’t find a match:
+
+Add the word to the end of wordTable.
+
+Set the corresponding count in countTable to 1.
+
+Repeat until you reach the sentinel word (0), which marks the end of input.
+
+Return the total number of unique words you found (size of wordTable and countTable).
+
+---------------------------------------------------------------------------------------------
+
+Example in simple terms
+
+Input: [cat, dog, cat, fish, dog, dog, 0]
+
+Read cat → not found in wordTable → add to wordTable[0], set countTable[0] = 1
+
+Read dog → not found → add to wordTable[1], set countTable[1] = 1
+
+Read cat → found at index 0 → increment countTable[0] to 2
+
+Read fish → not found → add to wordTable[2], countTable[2] = 1
+
+Read dog → found at index 1 → increment countTable[1] to 2
+
+Read dog → found at index 1 → increment countTable[1] to 3
+
+Read 0 → stop.
+
+Result:
+wordTable = [cat, dog, fish]
+countTable = [2, 3, 1]
+
+make build MAIN=DicComp.c
+*/
+
+
+int Btable(char input[4]){
+
+    char word_table[4];
+    char count_table[4]; 
+    int uwordcount= 0;
+
+    for(int i = 0; i < 4; i++){
+        char current_word = input[i];
+        int found = 0; 
+
+        for(int j = 0; j < uwordcount; j++){
+            if(word_table[j] == current_word){
+                count_table[j]++;
+                found = 1;
+                break;
+            }
+
+
+        }
+
+        if(!found){
+            word_table[uwordcount] = current_word;
+            count_table[uwordcount] = 1;
+            uwordcount++;
+        }
+    }
+}
+
+
+
+
+// int BuildTable(char input[4]){
+
+//     char word_array[4];
+//     int count_array[4] = {0};
+//     int ucount = 0;
+
+
+//     for(int i = 0; i < 4; i++){
+
+//         char current = input[i];
+//         int found = 0;
+
+//         for(int j = 0; j < ucount; j++){
+//             if(word_array[j] == current){
+//                 count_array[j]++; 
+//                 found = 1;
+//                 break;
+//             }
+
+//         }
+
+//         if(!found){
+//             word_array[ucount] = current; 
+//             count_array[ucount] = 1;
+//             ucount++;
+//         }
+
+//     }
+
+
+//     // for (int k = 0; k < ucount; k++) {
+//     //     printf("%c: %d\n", word_array[k], count_array[k]);
+//     // }
+
+//     return ucount;
+// }
+
+
+// int main(void){
+
+
+//     char input[4] = {'a', 'a', 'b', 'b'};
+//     BuildTable(input);
+    
+    
+//     return 0;
+// }
+
