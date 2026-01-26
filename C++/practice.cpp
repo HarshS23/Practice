@@ -25,6 +25,8 @@ int main(){
 
     std::cout << "Hello World" << std::endl;
 
+    delete savingPtr;
+
 
 
 }

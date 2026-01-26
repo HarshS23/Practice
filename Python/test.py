@@ -11,7 +11,7 @@
 # Backtracking
 # Depth-First Search (DFS)
 # Breadth-First Search (BFS)
-# Merge sort
+# Merge sort 
 # Quick sort
 # Heap operations (heapify, push, pop)
 # Tree traversals (pre / in / post / level)
